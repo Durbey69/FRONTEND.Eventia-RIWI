@@ -7,7 +7,7 @@ Este proyecto permite gestionar tickets y usuarios para soporte técnico, incluy
 ##  Estructura del Proyecto
 
 - **Frontend**: Angular 18 Standalone + Material UI
-- **Backend**: .NET 8 API REST con Clean Architecture
+- **Backend**: .NET 9 API REST con Clean Architecture
 - **Base de Datos**: SQL Server
 - **Autenticación**: Simulada mediante localStorage
 
