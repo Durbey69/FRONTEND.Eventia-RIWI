@@ -1,0 +1,21 @@
+<div class="login-container">
+  <h2>Iniciar sesión</h2>
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput type="email" formControlName="correo" />
+
+      @if (form.controls['correo'].hasError('required')) {
+        <mat-error>El correo es requerido</mat-error>
+      }
+      @if (form.controls['correo'].hasError('email')) {
+        <mat-error>Correo no válido</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Ingresar
+    </button>
+  </form>
+</div>

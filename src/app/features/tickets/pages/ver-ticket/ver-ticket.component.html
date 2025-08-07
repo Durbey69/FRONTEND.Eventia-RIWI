@@ -1,0 +1,53 @@
+<ng-container *ngIf="!loading(); else cargando">
+  <mat-card *ngIf="ticket() as t">
+    <mat-card-title>{{ t.titulo }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Descripción:</strong> {{ t.descripcion }}</p>
+      <p><strong>Estado:</strong> {{ t.estado }}</p>
+      <p><strong>Asignado a:</strong> {{ t.nombreUsuarioAsignado }}</p>
+      <p><strong>Creado por:</strong> {{ t.nombreUsuarioCreador }}</p>
+      <p><strong>Fecha de creación:</strong> {{ t.fechaCreacion | date }}</p>
+      <p *ngIf="t.fechaCierre"><strong>Fecha de cierre:</strong> {{ t.fechaCierre | date }}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<h2> Trazabilidad del Ticket</h2>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource">
+
+  <ng-container matColumnDef="fecha">
+    <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+    <mat-cell *matCellDef="let evento"> {{ evento.fecha | date:'short' }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="tipoEvento">
+    <mat-header-cell *matHeaderCellDef> Evento </mat-header-cell>
+    <mat-cell *matCellDef="let evento"> {{ evento.tipoEvento }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mensaje">
+    <mat-header-cell *matHeaderCellDef> Mensaje </mat-header-cell>
+    <mat-cell *matCellDef="let evento"> {{ evento.mensaje }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="usuario">
+    <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+    <mat-cell *matCellDef="let evento"> {{ evento.nombreUsuarioResponsable }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+
+
+<ng-template #cargando>
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

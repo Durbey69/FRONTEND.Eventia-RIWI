@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Crear Usuario</h2>
+
+  <form [formGroup]="form" (ngSubmit)="crear()">
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Correo</mat-label>
+      <input matInput formControlName="correo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option *ngFor="let rol of roles" [value]="rol">
+          {{ Rol[rol] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+    <button mat-button color="warn" type="button" (click)="router.navigate(['/usuarios'])">
+      Cancelar
+    </button>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+.full-width-table {
+  width: 100%;
+  font-size: 14px;
+
+  th, td {
+    padding: 8px 12px;
+  }
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

@@ -1,0 +1,30 @@
+.tickets-container {
+  padding: 1rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .actions-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+
+  .full-width-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

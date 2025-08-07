@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, signal } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
+import { HeaderComponent } from './features/layout/components/header/header.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [RouterOutlet, HeaderComponent,CommonModule],
+  template: `
+    <app-header *ngIf="estaLogueado()"></app-header>
+    <router-outlet />
+  `
 })
 export class AppComponent {
-  title = 'eventia-frontend';
+  readonly estaLogueado = computed(() => !!localStorage.getItem('usuarioLogueado'));
 }

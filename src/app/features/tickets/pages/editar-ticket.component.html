@@ -1,0 +1,34 @@
+<section class="editar-ticket">
+  <h1>Editar Ticket</h1>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <mat-form-field class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="descripcion" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option [value]="0">Abierto</mat-option>
+        <mat-option [value]="1">En Proceso</mat-option>
+        <mat-option [value]="2">Cerrado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Asignado a</mat-label>
+      <mat-select formControlName="usuarioAsignadoId">
+        <mat-option *ngFor="let u of usuarios()" [value]="u.id">{{ u.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Guardar Cambios</button>
+    <button mat-button color="warn" type="button" routerLink="/tickets">Cancelar</button>
+  </form>
+</section>
